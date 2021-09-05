@@ -24,8 +24,6 @@ public class PersoanaController {
         return SingletonHolder.INSTANCE;
     }
 
-
-    // interfata grafica va folosi aceasta metoda pentru a afisa persoanele
     public List<Persoana> findAll() {
         return persoanaDao.findAll();
     }
@@ -35,7 +33,6 @@ public class PersoanaController {
     }
 
     public boolean create(Persoana p) {
-        // vrem sa creeam o persoana cu conditia ca numele sa nu existe
 
         Optional<Persoana> persoanaOptional = persoanaDao.findByNume(p.getNume());
 

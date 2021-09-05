@@ -26,11 +26,11 @@ public class PersoanaFrame extends JFrame {
         afisPersoane();
         adaugaButton.addActionListener(ev -> adaugaPersoana());
 
-        setContentPane(mainPanel); // setam panoul pe fereastra
-        // fereastra o cream noi de mana
-        pack(); // redimensionam fereastra
-        setLocationRelativeTo(null); //centram
-        setVisible(true); //default nu este vizibila
+        setContentPane(mainPanel);
+
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         list1.addMouseListener(new MouseAdapter() {
@@ -48,14 +48,13 @@ public class PersoanaFrame extends JFrame {
                 e.getButton() == MouseEvent.BUTTON1 &&
                 e.getClickCount() == 2) {
 
-           // TODO: deschide fereastra de contacte
             Persoana selected = (Persoana) list1.getSelectedValue();
-            // linia de cod care deschide fereastra de contacte
+
             new ContactFrame(selected);
         }
 
         if (isItemSelected &&
-                e.getButton() == MouseEvent.BUTTON3 && // buton dreapta
+                e.getButton() == MouseEvent.BUTTON3 &&
                 e.getClickCount() == 2) {
 
             Persoana selected = (Persoana) list1.getSelectedValue();
@@ -71,9 +70,9 @@ public class PersoanaFrame extends JFrame {
     private void afisPersoane() {
         List<Persoana> persoane = PersoanaController.getInstance().findAll();
 
-        model.clear(); //pentru a sterge elementele de pe model, pentru a fi inlocuite de cele noi
-        persoane.forEach(p ->model.addElement(p)); // model::addElement
-        //modelul notifica lista iar lista va notifica interfata grafica
+        model.clear();
+        persoane.forEach(p ->model.addElement(p));
+
     }
 
     private void adaugaPersoana() {

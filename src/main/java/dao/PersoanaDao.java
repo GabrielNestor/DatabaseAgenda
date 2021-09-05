@@ -12,7 +12,6 @@ import java.util.Optional;
 
 public class PersoanaDao {
 
-    // se va ocupa cu executarea comenzilor pe baza de date
     private Connection connection;
 
     private PreparedStatement createStatement;
@@ -26,9 +25,7 @@ public class PersoanaDao {
         try {
             createStatement =
                     connection.prepareStatement(" INSERT INTO persoana VALUES (null, ?)");
-            // impiedicare sql injection
-            // null este pentru id , ? - pentru parametrizarea statement-ului
-            // pentru folosirea in contexte diferite
+
             findAllStatement =
                     connection.prepareStatement(" SELECT * FROM persoana");
             findByNumeStatement =
@@ -42,13 +39,10 @@ public class PersoanaDao {
     }
 
     public boolean create(Persoana p) {
-        // ibdexarea parametrilor(?) incepe de la 1
+
         try {
             createStatement.setString(1, p.getNume());
 
-            // vrem sa actualizam baza de date
-            // returneaza un int care reprezinta numarul de inregistrari modificate
-            // daca valoarea este diferita de 0, tabela a fost actualizata
             return createStatement.executeUpdate() != 0;
 
         } catch (SQLException e) {
@@ -74,13 +68,12 @@ public class PersoanaDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        // returnam ceva, niciodata null, in cazul nostru lista goala
+
         return persoane;
     }
 
     public Optional<Persoana> findByNume(String nume) {
-        // folosim Optional pentru a returna o cutie goala, in cazul in care
-        // persoana nu este gasita
+
         try {
             findByNumeStatement.setString(1, nume);
 
