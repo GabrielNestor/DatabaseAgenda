@@ -15,7 +15,6 @@ public class ConnectionManager {
     private ConnectionManager() {
         String url = "jdbc:mysql://localhost/java1pc9";
 
-
         try {
             connection = DriverManager.getConnection(url, "root", "");
         } catch (SQLException e) {

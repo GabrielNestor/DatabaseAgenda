@@ -13,7 +13,7 @@ public class PersoanaFrame extends JFrame {
     private JPanel mainPanel;
     private JTextField textField1;
     private JButton adaugaButton;
-    // toate sunt de fapt instantiate
+
 
 
     private DefaultListModel<Persoana> model;
