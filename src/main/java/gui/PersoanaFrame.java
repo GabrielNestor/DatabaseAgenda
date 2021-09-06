@@ -72,7 +72,6 @@ public class PersoanaFrame extends JFrame {
 
         model.clear();
         persoane.forEach(p ->model.addElement(p));
-
     }
 
     private void adaugaPersoana() {
@@ -85,7 +84,7 @@ public class PersoanaFrame extends JFrame {
         if (rez) {
             afisPersoane();
         } else {
-            JOptionPane.showMessageDialog(null, "Numele exista deja");
+            JOptionPane.showMessageDialog(null, "Name already exists");
         }
         textField1.setText("");
     }
