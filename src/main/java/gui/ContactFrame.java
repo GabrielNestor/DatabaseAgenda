@@ -54,7 +54,7 @@ public class ContactFrame extends JFrame{
         if (rez) {
             afisContacte();
         } else {
-            JOptionPane.showMessageDialog(null, "Eroare");
+            JOptionPane.showMessageDialog(null, "Error");
         }
 
         textField1.setText("");
