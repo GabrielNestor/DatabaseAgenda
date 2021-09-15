@@ -1,6 +1,6 @@
 package Controller;
 
-import dao.ContactDao;
+import dao.DaoContact;
 import model.Contact;
 
 import java.util.List;
@@ -11,10 +11,10 @@ public class ContactController {
         public static final ContactController INSTANCE = new ContactController();
     }
 
-    private ContactDao contactDao;
+    private DaoContact contactDao;
 
     private ContactController() {
-        contactDao = new ContactDao(
+        contactDao = new DaoContact(
                 ConnectionManager.getInstance().getConnection()
         );
     }
@@ -23,8 +23,8 @@ public class ContactController {
         return SingletonHolder.INSTANCE;
     }
 
-    public List<Contact> findByPersoana (int persoanaId) {
-        return contactDao.findByPersoana(persoanaId);
+    public List<Contact> findByPerson (int persoanaId) {
+        return contactDao.findByPerson(persoanaId);
     }
 
     public boolean create(Contact c) {

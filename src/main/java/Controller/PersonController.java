@@ -1,30 +1,30 @@
 package Controller;
 
-import dao.PersoanaDao;
-import model.Persoana;
+import dao.DaoPerson;
+import model.Person;
 
 import java.util.List;
 import java.util.Optional;
 
-public class PersoanaController {
+public class PersonController {
 
     private static final class SingletonHolder {
-        public static final PersoanaController INSTANCE = new PersoanaController();
+        public static final PersonController INSTANCE = new PersonController();
     }
 
-    private PersoanaDao persoanaDao;
+    private DaoPerson persoanaDao;
 
-    private PersoanaController() {
-        persoanaDao = new PersoanaDao(
+    private PersonController() {
+        persoanaDao = new DaoPerson(
                 ConnectionManager.getInstance().getConnection()
         );
     }
 
-    public static PersoanaController getInstance() {
+    public static PersonController getInstance() {
         return SingletonHolder.INSTANCE;
     }
 
-    public List<Persoana> findAll() {
+    public List<Person> findAll() {
         return persoanaDao.findAll();
     }
 
@@ -32,9 +32,9 @@ public class PersoanaController {
         return persoanaDao.delete(id);
     }
 
-    public boolean create(Persoana p) {
+    public boolean create(Person p) {
 
-        Optional<Persoana> persoanaOptional = persoanaDao.findByNume(p.getNume());
+        Optional<Person> persoanaOptional = persoanaDao.findByName(p.getName());
 
         if(persoanaOptional.isEmpty()) {
             return persoanaDao.create(p);

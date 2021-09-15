@@ -13,7 +13,7 @@ public class ConnectionManager {
     private Connection connection;
 
     private ConnectionManager() {
-        String url = "jdbc:mysql://localhost/java1pc9";
+        String url = "jdbc:mysql://localhost/ContactDatabase";
 
         try {
             connection = DriverManager.getConnection(url, "root", "");

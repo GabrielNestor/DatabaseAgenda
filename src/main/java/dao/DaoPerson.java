@@ -1,6 +1,6 @@
 package dao;
 
-import model.Persoana;
+import model.Person;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class PersoanaDao {
+public class DaoPerson {
 
     private Connection connection;
 
@@ -19,7 +19,7 @@ public class PersoanaDao {
     private PreparedStatement findByNumeStatement;
     private PreparedStatement deleteStatement;
 
-    public PersoanaDao(Connection connection) {
+    public DaoPerson(Connection connection) {
         this.connection = connection;
 
         try {
@@ -38,10 +38,10 @@ public class PersoanaDao {
 
     }
 
-    public boolean create(Persoana p) {
+    public boolean create(Person p) {
 
         try {
-            createStatement.setString(1, p.getNume());
+            createStatement.setString(1, p.getName());
 
             return createStatement.executeUpdate() != 0;
 
@@ -52,15 +52,15 @@ public class PersoanaDao {
         return false;
     }
 
-    public List<Persoana> findAll() {
-        List<Persoana> persoane = new ArrayList<>();
+    public List<Person> findAll() {
+        List<Person> persoane = new ArrayList<>();
         try {
             ResultSet rs = findAllStatement.executeQuery();
 
             while(rs.next()) {
-                Persoana p = new Persoana(
+                Person p = new Person(
                         rs.getInt("id"),
-                        rs.getString("nume")
+                        rs.getString("name")
                 );
 
                 persoane.add(p);
@@ -72,18 +72,18 @@ public class PersoanaDao {
         return persoane;
     }
 
-    public Optional<Persoana> findByNume(String nume) {
+    public Optional<Person> findByName(String name) {
 
         try {
-            findByNumeStatement.setString(1, nume);
+            findByNumeStatement.setString(1, name);
 
             ResultSet rs = findByNumeStatement.executeQuery();
 
             if(rs.next()) {
                 return Optional.of(
-                        new Persoana(
+                        new Person(
                         rs.getInt("id"),
-                        rs.getString("nume"))
+                        rs.getString("name"))
                 );
             }
         } catch (SQLException e) {

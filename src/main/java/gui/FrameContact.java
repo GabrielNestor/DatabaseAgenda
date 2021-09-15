@@ -2,29 +2,29 @@ package gui;
 
 import Controller.ContactController;
 import model.Contact;
-import model.Persoana;
+import model.Person;
 
 import javax.swing.*;
 import java.util.List;
 
-public class ContactFrame extends JFrame{
+public class FrameContact extends JFrame{
     private JList list1;
     private JPanel mainPanel;
     private JTextField textField1;
-    private JButton adaugaButton;
+    private JButton addButton;
 
-    private Persoana persoana;
+    private Person persoana;
 
     private DefaultListModel<Contact> model;
 
-    public ContactFrame(Persoana persoana) {
+    public FrameContact(Person persoana) {
         this.persoana = persoana;
 
         model = new DefaultListModel<>();
         list1.setModel(model);
 
-        afisContacte();
-        adaugaButton.addActionListener(ev -> adaugaContact());
+        showContacts();
+        addButton.addActionListener(ev -> addContact());
 
         setContentPane(mainPanel);
         pack();
@@ -32,15 +32,15 @@ public class ContactFrame extends JFrame{
         setVisible(true);
     }
 
-    private void afisContacte() {
+    private void showContacts() {
         List<Contact> contacte = ContactController.getInstance()
-                .findByPersoana(persoana.getId());
+                .findByPerson(persoana.getId());
 
         model.clear();
         contacte.forEach(model::addElement);
     }
 
-    private void adaugaContact() {
+    private void addContact() {
         String telefon = textField1.getText();
 
         Contact contact = new Contact(
@@ -52,7 +52,7 @@ public class ContactFrame extends JFrame{
         boolean rez = ContactController.getInstance().create(contact);
 
         if (rez) {
-            afisContacte();
+            showContacts();
         } else {
             JOptionPane.showMessageDialog(null, "Error");
         }

@@ -2,15 +2,15 @@ package model;
 
 import java.util.Objects;
 
-public class Persoana {
+public class Person {
 
     private int id;
 
-    private String nume;
+    private String name;
 
-    public Persoana(int id, String nume) {
+    public Person(int id, String name) {
         this.id = id;
-        this.nume = nume;
+        this.name = name;
     }
 
     public int getId() {
@@ -21,19 +21,19 @@ public class Persoana {
         this.id = id;
     }
 
-    public String getNume() {
-        return nume;
+    public String getName() {
+        return name;
     }
 
-    public void setNume(String nume) {
-        this.nume = nume;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
-        return "Persoana{" +
+        return "Person{" +
                 "id=" + id +
-                ", nume='" + nume + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 
@@ -41,8 +41,8 @@ public class Persoana {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Persoana persoana = (Persoana) o;
-        return id == persoana.id;
+        Person person = (Person) o;
+        return id == person.id;
     }
 
     @Override

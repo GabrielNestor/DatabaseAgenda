@@ -9,14 +9,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContactDao {
+public class DaoContact {
 
     private Connection connection;
 
     private PreparedStatement createStatement;
     private PreparedStatement findByPersoanaStatement;
 
-    public ContactDao(Connection connection) {
+    public DaoContact(Connection connection) {
         this.connection = connection;
 
         try {
@@ -31,8 +31,8 @@ public class ContactDao {
 
     public boolean create(Contact contact) {
         try {
-            createStatement.setString(1, contact.getTelefon());
-            createStatement.setInt(2, contact.getPersoanaId());
+            createStatement.setString(1, contact.getPhone());
+            createStatement.setInt(2, contact.getPersonId());
 
             return createStatement.executeUpdate() != 0;
         } catch (SQLException e) {
@@ -41,7 +41,7 @@ public class ContactDao {
         return false;
     }
 
-    public List<Contact> findByPersoana(int persoanaId) {
+    public List<Contact> findByPerson(int persoanaId) {
         List<Contact> contacte = new ArrayList<>();
 
         try {
@@ -52,8 +52,8 @@ public class ContactDao {
             while(rs.next()) {
                 Contact c = new Contact(
                         rs.getInt("id"),
-                        rs.getString("telefon"),
-                        rs.getInt("persoana_id")
+                        rs.getString("phone"),
+                        rs.getInt("person_id")
                 );
 
                 contacte.add(c);

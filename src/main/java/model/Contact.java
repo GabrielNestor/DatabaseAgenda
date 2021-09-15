@@ -5,14 +5,15 @@ import java.util.Objects;
 public class Contact {
 
     private int id;
-    private String telefon;
+    private String phone;
 
-    private int persoanaId;
 
-    public Contact(int id, String telefon, int persoanaId) {
+    private int personId;
+
+    public Contact(int id, String phone, int persoanaId) {
         this.id = id;
-        this.telefon = telefon;
-        this.persoanaId = persoanaId;
+        this.phone = phone;
+        this.personId = persoanaId;
     }
 
     public int getId() {
@@ -23,27 +24,27 @@ public class Contact {
         this.id = id;
     }
 
-    public String getTelefon() {
-        return telefon;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setTelefon(String telefon) {
-        this.telefon = telefon;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public int getPersoanaId() {
-        return persoanaId;
+    public int getPersonId() {
+        return personId;
     }
 
-    public void setPersoanaId(int persoanaId) {
-        this.persoanaId = persoanaId;
+    public void setPersonId(int personId) {
+        this.personId = personId;
     }
 
     @Override
     public String toString() {
         return "Contact{" +
                 "id=" + id +
-                ", telefon='" + telefon + '\'' +
+                ", phone='" + phone + '\'' +
                 '}';
     }
 
